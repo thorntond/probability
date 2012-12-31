@@ -5,7 +5,9 @@ import java.text.DecimalFormat;
 import java.util.Random;
 
 /**
- * A command-line dice roller that rolls two six-sided (D6) dice.
+ * A command-line dice roller that rolls two six-sided (D6) dice.  This program
+ * is designed to expedite board-game sessions by providing instant results and
+ * a normal distribution of dice outcomes.
  *
  * @author Daniel F. Thornton
  */
@@ -85,6 +87,18 @@ public class DiceRoller
                                        DIE_TAB + "|O   O|\n" +
                                        DIE_TAB + "|O___O|\n";
 
+    /**
+     * The dice-rolling command-line interface (CLI).  This CLI runs in a
+     * continuous loop, designed to support board game play.  It defaults to the
+     * larger, 7x7 die pictures, and accepts an optional command-line parameter.
+     * 
+     * @param small directs the CLI to display 5x5 die pictures.
+     * @param tiny  directs the CLI to display 5x5 die pictures.
+     * @param 5     directs the CLI to display 5x5 die pictures.
+     * @param large directs the CLI to display 7x7 die pictures.
+     * @param big   directs the CLI to display 7x7 die pictures.
+     * @param 7     directs the CLI to display 7x7 die pictures.
+     */
     public static void main (String[] args)
     {
         Random r = new Random(System.currentTimeMillis());
@@ -141,14 +155,25 @@ public class DiceRoller
         }
     }
     
-    // Defaults to 7x7 die pictures.
-    private static String getDiePicture (int number)
+    /**
+     * Converts a die number into a 7x7 ASCII die picture.
+     * 
+     * @param number An integer from one (1) to six (6).
+     */
+    public static String getDiePicture (int number)
     {
         return getDiePicture(number, 7);
     }
     
-    // Currently accepts only size 5 or size 7.
-    private static String getDiePicture (int number, int pictureSize)
+    /**
+     * Converts a die number into an ASCII die picture.
+     * 
+     * @param number An integer from one (1) to six (6).
+     * @param pictureSize The size of the desired ASCII die picture.  Currently
+     * accepts five (5) or seven (7), returning 5x5 or 7x7 pictures
+     * respectively.
+     */
+    public static String getDiePicture (int number, int pictureSize)
     {
         if (pictureSize == 5)
         {
